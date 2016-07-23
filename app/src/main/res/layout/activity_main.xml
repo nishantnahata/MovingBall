@@ -6,10 +6,12 @@
     tools:context="com.example.sensors.movingball.MainActivity"
     android:id="@+id/lv1">
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="O"
+    <ImageView
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:src="@drawable/ball"
+
         android:id="@+id/ball"
         />
+
 </FrameLayout>
