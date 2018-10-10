@@ -15,6 +15,7 @@ import android.view.Window;
 import android.view.WindowManager;
 import android.view.animation.Animation;
 import android.view.animation.ScaleAnimation;
+import android.widget.FrameLayout;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -26,6 +27,7 @@ public class MainActivity extends AppCompatActivity implements SensorEventListen
     long prevTime;
     int h,w;
     float x,y,orX,orY;
+    FrameLayout frameLayout;
     private static final String TAG = "MainActivity";
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -34,6 +36,8 @@ public class MainActivity extends AppCompatActivity implements SensorEventListen
         getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
         setContentView(R.layout.activity_main);
         String ball=getIntent().getStringExtra(EntryActivity.BALL_TYPE);
+
+        frameLayout= (FrameLayout) findViewById(R.id.lv1);
 
         Display display =    getWindowManager().getDefaultDisplay();
         Point size = new Point();
@@ -47,6 +51,7 @@ public class MainActivity extends AppCompatActivity implements SensorEventListen
 
         tv = (ImageView) findViewById(R.id.ball);
         tv.setImageResource(this.getResources().getIdentifier(ball,"drawable",this.getPackageName()));
+        frameLayout.setBackgroundResource(this.getResources().getIdentifier(ball+'b',"drawable",this.getPackageName()));
         sMgr.registerListener(this, sensor, 1000000);
 
 
