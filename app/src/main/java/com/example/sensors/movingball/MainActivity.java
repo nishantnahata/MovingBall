@@ -1,6 +1,7 @@
 package com.example.sensors.movingball;
 
 import android.content.Context;
+import android.content.Intent;
 import android.graphics.Point;
 import android.graphics.drawable.Animatable;
 import android.hardware.Sensor;
@@ -32,6 +33,8 @@ public class MainActivity extends AppCompatActivity implements SensorEventListen
         this.requestWindowFeature(Window.FEATURE_NO_TITLE);
         getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
         setContentView(R.layout.activity_main);
+        String ball=getIntent().getStringExtra(EntryActivity.BALL_TYPE);
+
         Display display =    getWindowManager().getDefaultDisplay();
         Point size = new Point();
         display.getSize(size);
@@ -43,6 +46,7 @@ public class MainActivity extends AppCompatActivity implements SensorEventListen
         Sensor sensor = sMgr.getDefaultSensor(Sensor.TYPE_ACCELEROMETER);
 
         tv = (ImageView) findViewById(R.id.ball);
+        tv.setImageResource(this.getResources().getIdentifier(ball,"drawable",this.getPackageName()));
         sMgr.registerListener(this, sensor, 1000000);
 
 
